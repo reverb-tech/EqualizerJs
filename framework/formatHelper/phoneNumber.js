@@ -58,7 +58,7 @@ var formatarTelefoneMask = function(number) {
 
         if (!(j == 0) &&
             !(j == 2) &&
-            !(j == 7)) {
+            !(j == 6)) {
             if (charArr[j] != undefined) {
                 formatedMask += charArr[j];
             }

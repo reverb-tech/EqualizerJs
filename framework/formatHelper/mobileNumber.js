@@ -51,7 +51,7 @@ var formatarCelularMask = function(number) {
             }
         }
 
-        if (j == 6) {
+        if (j == 7) {
             if (charArr[j] != undefined) {
                 formatedMask += "-" + charArr[j];
             }
