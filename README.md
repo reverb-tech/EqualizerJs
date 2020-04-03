@@ -5,7 +5,7 @@ Pre-built functions:
 
 //Validação de E-mail
 <!--HTML-->
-<pre>
+
 <input type="text" 
     name="txtEmail" 
     id="txtEmail" />
@@ -13,7 +13,7 @@ Pre-built functions:
     Validar
 </button>
 <span id="validationMsg" style="display: none">O e-mail é valido.</span>
-</pre>
+
 
 //Js
 //e-mail validation
