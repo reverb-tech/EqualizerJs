@@ -1,0 +1,58 @@
+//e-mail validation
+$("#btnValidateEmail").click(function() {
+    var valido = validateMail($("#txtEmail").val());
+    
+    if (!valido) 
+        alert('E-mail inválido');
+    else {
+        $("#validationMsg").attr("style", "display:block;");
+        $("#validationMsg").addClass("label label-success");
+    }
+});
+
+// Validação Número
+$("#btnValidateNumber").click(function() {
+    var valido = validateNumber($("#txtNumber").val());
+    
+    if (!valido) 
+        alert('Número inválido');
+    else {
+        $("#validationNumberMsg").attr("style", "display:block;");
+        $("#validationNumberMsg").addClass("label label-success");
+    }
+});
+
+//phone validation
+$("#txtFone").keyup(function(e) {
+    var fone = $("#txtFone").val();
+    var formatado = transformPhoneNumber(fone, e);
+    $("#txtFone").val(formatado);
+});
+
+//celular
+$("#txtMobile").keyup(function(e) {
+    var fone = $("#txtMobile").val();
+    var formatado = transformMobileNumber(fone, e);
+    $("#txtMobile").val(formatado);
+});
+
+//número
+$("#txtNumero").keyup(function(e) {
+    var fone = $("#txtNumero").val();
+    var formatado = transformIntegerNumber(fone, e);
+    $("#txtNumero").val(formatado);
+});
+
+//Decimal
+$("#txtDecimal").keyup(function(e) {
+    var fone = $("#txtDecimal").val();
+    var formatado = transformDecimalNumber(fone, e);
+    $("#txtDecimal").val(formatado);
+});
+
+//Datetime
+$("#txtData").keyup(function(e) {
+    var fone = $("#txtData").val();
+    var formatado = transformDatetime(fone, e);
+    $("#txtData").val(formatado);
+});

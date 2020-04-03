@@ -1,0 +1,198 @@
+<html>
+    <head>
+        <title>EqualizerJs - Simple centralized Js Functions</title>
+        <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css" />
+    </head>
+    <body>
+        
+        <div id="site-main" style="padding: 50px; width: 100%;">
+            
+            <h1>EqualizerJs</h1>
+            <p>
+                Simples framework para equalizar todos os projetos e criar um padrão de
+                validação para as interfaces de usuário.
+            </p>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Validação
+                </div>
+                <div class="panel-body">
+
+                    <!-- Validation Panel Body -->
+
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="row">
+                                <h3>Validação de E-mail</h3>
+                                <input type="text" 
+                                    name="txtEmail" 
+                                    id="txtEmail" />
+                                <button id="btnValidateEmail" type="button">
+                                    Validar
+                                </button>
+                                <span id="validationMsg" style="display: none">O e-mail é valido.</span>
+                            </div>
+                            <div class="row">
+                                <h3>Validação Número</h3>
+                                <input type="text" 
+                                    name="txtNumber" 
+                                    id="txtNumber" />
+                                <button id="btnValidateNumber" type="button">
+                                    Validar
+                                </button>
+                                <span id="validationNumberMsg" style="display: none">O número é valido.</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <pre>
+                                <code>
+            JS:
+            
+            $("#btnValidateEmail").click(function() {
+                var valido = validateMail($("#txtEmail").val());
+                
+                if (!valido) 
+                    alert('E-mail inválido');
+                else {
+                    $("#validationMsg").attr("style", "display:block;");
+                    $("#validationMsg").addClass("label label-success");
+                }
+            });
+
+            $("#btnValidateNumber").click(function() {
+                var valido = validateNumber($("#txtNumber").val());
+                
+                if (!valido) 
+                    alert('Número inválido');
+                else {
+                    $("#validationNumberMsg").attr("style", "display:block;");
+                    $("#validationNumberMsg").addClass("label label-success");
+                }
+            });
+            
+            HTML:
+            &lt;input type="text" name="txtEmail" id="txtEmail" &gt;
+            &lt;button id="btnValidateEmail" type="button"&gt; Validar &lt;/button&gt;
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+
+                <!-- Validation Panel Body -->
+
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Formato dos campos
+                    </div>
+                    <div class="panel-body">
+                        
+                        <!-- Format Patterns Body -->
+                        <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <h3>Formatação de campos</h3>
+                                    <form action="#">
+                                        <div class="form-group">
+                                            <label for="txtFone" class="control-label">
+                                                Telefone: (*) <small>somente números</small>
+                                            </label>
+                                            <input type="text" 
+                                                name="txtFone" 
+                                                class="form-control"
+                                                id="txtFone" />
+                                        </div>
+
+                                        <!-- Mobile -->
+                                        <div class="form-group">
+                                            <label for="txtFone" class="control-label">
+                                                Celular: (*) <small>somente números</small>
+                                            </label>
+                                            <input type="text" 
+                                                name="txtMobile" 
+                                                class="form-control"
+                                                id="txtMobile" />
+                                        </div>
+
+                                        <!-- integer -->
+                                        <div class="form-group">
+                                            <label for="txtNumero" class="control-label">
+                                                Número: (*) <small>somente números</small>
+                                            </label>
+                                            <input type="text" 
+                                                name="txtNumero" 
+                                                class="form-control"
+                                                id="txtNumero" />
+                                        </div>
+
+                                        <!-- decimal number -->
+                                        <div class="form-group">
+                                            <label for="txtDecimal" class="control-label">
+                                                Decimal: (*) <small>somente números</small>
+                                            </label>
+                                            <input type="text" 
+                                                name="txtDecimal" 
+                                                class="form-control"
+                                                id="txtDecimal" />
+                                        </div>
+
+                                        <!-- datetime Format -->
+                                        <div class="form-group">
+                                                <label for="txtData" class="control-label">
+                                                    Data: (*) <small>somente números</small>
+                                                </label>
+                                                <input type="text" 
+                                                    name="txtData" 
+                                                    class="form-control"
+                                                    id="txtData" />
+                                            </div>
+                                    </form>
+                                </div>
+                
+                                <div class="col-lg-8 col-md-8 col-sm-8">
+                                    <pre>
+                                        <code>
+                JS:
+                $("#txtFone").keyup(function(e) {
+                    var fone = $("#txtFone").val();
+                    var formatado = transformPhoneNumber(fone, e);
+                    $("#txtFone").val(formatado);
+                });
+
+                $("#txtMobile").keyup(function(e) {
+                    var fone = $("#txtMobile").val();
+                    var formatado = transformMobileNumber(fone, e);
+                    $("#txtMobile").val(formatado);
+                });
+
+                $("#txtNumero").keyup(function(e) {
+                    var fone = $("#txtNumero").val();
+                    var formatado = transformIntegerNumber(fone, e);
+                    $("#txtNumero").val(formatado);
+                });
+                
+                HTML:
+                &lt;input type="text" name="txtFone" class="form-control" id="txtFone" &gt;
+                                        </code>
+                                    </pre>
+                                </div>
+                            </div>
+                        <!-- Format Patterns Body -->
+
+                    </div>
+                </div>
+
+            <!-- e-mail validation -->
+            
+
+            <!-- format -->
+            
+        </div>
+
+        <script src="../vendor/jquery.min.js"></script>
+        <script src="../dist/equalizer.min.js"></script>
+        <script src="demo.js"></script>
+    </body>
+</html>
