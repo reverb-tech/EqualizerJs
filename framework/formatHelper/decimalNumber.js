@@ -19,6 +19,8 @@ var transformDecimalNumber = function(number, event) {
 
     var interactWithoutSc = number.replace(",", "");
     interactWithoutSc = interactWithoutSc.replace(".", "");
+    interactWithoutSc = interactWithoutSc.replace(".", "");
+    interactWithoutSc = interactWithoutSc.replace(".", "");
 
     var formatedMask = "";
     if (validateNumberDecimal(interactWithoutSc)) {
@@ -79,6 +81,84 @@ var transformDecimalNumber = function(number, event) {
                     formatedMask.substring(6, 7) + 
                     "," + 
                     formatedMask.substring(7, 8) + 
+                    interactWithoutSc[i];
+            }
+
+            if (i==7) { //14.509,09  145.090,95
+                formatedMask = formatedMask.substring(0, 1) +
+                    formatedMask.substring(1, 2) +
+                    formatedMask.substring(3, 4) +
+                    "." + 
+                    formatedMask.substring(4, 5) + 
+                    formatedMask.substring(5, 6) + 
+                    formatedMask.substring(7, 8) + 
+                    "," + 
+                    formatedMask.substring(8, 9) + 
+                    interactWithoutSc[i];
+            }
+
+            if (i==8) { //145.090,95  1.450.909,59
+                formatedMask = formatedMask.substring(0, 1) +
+                    "." + 
+                    formatedMask.substring(1, 2) +
+                    formatedMask.substring(2, 3) +
+                    formatedMask.substring(4, 5) + 
+                    "." + 
+                    formatedMask.substring(5, 6) + 
+                    formatedMask.substring(6, 7) + 
+                    formatedMask.substring(8, 9) + 
+                    "," + 
+                    formatedMask.substring(9, 10) + 
+                    interactWithoutSc[i];
+            }
+
+            if (i==9) { //1.450.909,59  14.509.095,90
+                formatedMask = formatedMask.substring(0, 1) +
+                    formatedMask.substring(2, 3) +
+                    "." + 
+                    formatedMask.substring(3, 4) +
+                    formatedMask.substring(4, 5) + 
+                    formatedMask.substring(6, 7) + 
+                    "." + 
+                    formatedMask.substring(7, 8) + 
+                    formatedMask.substring(8, 9) + 
+                    formatedMask.substring(10, 11) + 
+                    "," + 
+                    formatedMask.substring(11, 12) + 
+                    interactWithoutSc[i];
+            }
+
+            if (i==10) { //14.509.095,90   145.090.959,02
+                formatedMask = formatedMask.substring(0, 1) +
+                    formatedMask.substring(1, 2) +
+                    formatedMask.substring(3, 4) +
+                    "." + 
+                    formatedMask.substring(4, 5) + 
+                    formatedMask.substring(5, 6) + 
+                    formatedMask.substring(7, 8) + 
+                    "." + 
+                    formatedMask.substring(8, 9) + 
+                    formatedMask.substring(9, 10) + 
+                    formatedMask.substring(11, 12) + 
+                    "," + 
+                    formatedMask.substring(12, 13) + 
+                    interactWithoutSc[i];
+            }
+
+            if (i==11) { //145.090.959,02   1.450.909.590,29
+                formatedMask = formatedMask.substring(0, 1) + "." + 
+                    formatedMask.substring(1, 2) +
+                    formatedMask.substring(2, 3) +
+                
+                    formatedMask.substring(4, 5) +  "." + 
+                    formatedMask.substring(5, 6) + 
+                    formatedMask.substring(6, 7) + 
+                    
+                    formatedMask.substring(8, 9) + "." + 
+                    formatedMask.substring(9, 10) + 
+                    formatedMask.substring(10, 11) + formatedMask.substring(12, 13) + 
+                    "," + 
+                    formatedMask.substring(13, 14) + 
                     interactWithoutSc[i];
             }
             // else {
