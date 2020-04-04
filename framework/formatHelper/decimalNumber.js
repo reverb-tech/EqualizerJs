@@ -6,9 +6,9 @@ var transformDecimalNumber = function(number, event) {
         case 8:  
         case 9:  // Tab
         case 13: // Enter
-        case 37: // Left
+        // case 37: // Left
         // case 38: // Up
-        case 39: // Right
+        // case 39: // Right
         // case 40: // Down
             return;
     }
@@ -17,12 +17,14 @@ var transformDecimalNumber = function(number, event) {
         number == '')
         return;
 
+    var interactWithoutSc = number.replace(",", "");
+    interactWithoutSc = interactWithoutSc.replace(".", "");
+
     var formatedMask = "";
-    if (validateNumberDecimal(number)) {
+    if (validateNumberDecimal(interactWithoutSc)) {
         // formatedMask = number + formatedMask;
         // var numeroCheio = number.toString();
-        var interactWithoutSc = number.replace(",", "");
-        interactWithoutSc = interactWithoutSc.replace(".", "");
+        
         var interact = interactWithoutSc.split('');
 
         for(i=0;i<interact.length;i++){
@@ -37,12 +39,48 @@ var transformDecimalNumber = function(number, event) {
                 formatedMask += interactWithoutSc[i];
             if (i==1) //45
                 formatedMask = "," + formatedMask + interactWithoutSc[i];
-            if (i==2){ //4,50
+            if (i==2) //,450
                 formatedMask = formatedMask.substring(1, 2) +
                     "," + formatedMask.substring(2, 3) + interactWithoutSc[i];
+            if (i==3){ //4,50
+                formatedMask = formatedMask.substring(0, 1) +
+                     formatedMask.substring(2, 3) + 
+                     "," + 
+                     formatedMask.substring(3, 4) + 
+                     interactWithoutSc[i];
             }
-            else if (i==5)
-                formatedMask = "." + formatedMask + interactWithoutSc[i];
+
+            if (i==4) { //45,09
+                formatedMask = formatedMask.substring(0, 1) +
+                    formatedMask.substring(1, 2) + 
+                    formatedMask.substring(3, 4) + 
+                    "," + 
+                    formatedMask.substring(4, 5) + 
+                    interactWithoutSc[i];
+            } 
+            
+            if (i==5) { //450,90
+                formatedMask = formatedMask.substring(0, 1) +
+                    "." +
+                    formatedMask.substring(1, 2) + 
+                    formatedMask.substring(2, 3) + 
+                    formatedMask.substring(4, 5) + 
+                    "," + 
+                    formatedMask.substring(5, 6) + 
+                    interactWithoutSc[i];
+            }
+
+            if (i==6) { //1.450,90   14.509,09
+                formatedMask = formatedMask.substring(0, 1) +
+                    formatedMask.substring(2, 3) +
+                    "." + 
+                    formatedMask.substring(3, 4) + 
+                    formatedMask.substring(4, 5) + 
+                    formatedMask.substring(6, 7) + 
+                    "," + 
+                    formatedMask.substring(7, 8) + 
+                    interactWithoutSc[i];
+            }
             // else {
             //     formatedMask += interactWithoutSc[i];
             // }
